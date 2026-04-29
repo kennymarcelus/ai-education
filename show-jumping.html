@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' https://placehold.co; font-src 'self'; script-src 'none'; object-src 'none'; frame-ancestors 'none';" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>Crest & Course — Show Jumping</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -91,6 +93,7 @@
       padding: .9rem 2.4rem; border-radius: 100px; font-size: .85rem;
       letter-spacing: .06em; text-transform: uppercase; cursor: pointer;
       transition: background .2s, transform .2s;
+      text-decoration: none; display: inline-flex; align-items: center;
     }
     .btn-primary:hover { background: var(--green2); transform: translateY(-2px); }
     .btn-ghost {
@@ -99,13 +102,21 @@
       padding: .9rem 2.4rem; border-radius: 100px; font-size: .85rem;
       letter-spacing: .06em; text-transform: uppercase; cursor: pointer;
       transition: border-color .2s, background .2s;
+      text-decoration: none; display: inline-flex; align-items: center;
     }
     .btn-ghost:hover { border-color: var(--ink); background: rgba(14,14,12,.04); }
     .hero-image {
       width: 100%; aspect-ratio: 3/4; border-radius: 24px; overflow: hidden;
-      position: relative;
+      position: relative; max-height: calc(100vh - 11rem);
     }
-    .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-image img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      object-position: center center;
+    }
+    .hero-image::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse at center, transparent 45%, rgba(14,14,12,.35) 100%);
+    }
     .hero-badge {
       position: absolute; bottom: 1.5rem; left: 1.5rem;
       background: rgba(245,242,235,.92); backdrop-filter: blur(12px);
@@ -325,6 +336,45 @@
       font-size: .75rem; color: var(--muted);
     }
 
+    /* ── MEET THE RIDERS ── */
+    .meet-riders { padding: 8rem 6vw; background: var(--ink); }
+    .meet-riders-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 4rem;
+    }
+    .meet-riders-title {
+      font-family: Georgia, serif; font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 400; color: var(--paper); letter-spacing: -.02em;
+    }
+    .meet-riders-sub { font-size: .9rem; color: var(--muted); margin-top: .5rem; max-width: 44ch; line-height: 1.6; }
+    .riders-full-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+    }
+    .rider-full-card {
+      background: rgba(245,242,235,.04); border: 1px solid rgba(245,242,235,.09);
+      border-radius: 20px; overflow: hidden;
+      transition: border-color .25s, transform .25s;
+    }
+    .rider-full-card:hover { border-color: rgba(184,146,58,.45); transform: translateY(-3px); }
+    .rider-full-photo { width: 100%; aspect-ratio: 3/4; overflow: hidden; }
+    .rider-full-photo img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform .4s;
+    }
+    .rider-full-card:hover .rider-full-photo img { transform: scale(1.04); }
+    .rider-full-info { padding: 1.2rem 1.4rem 1.4rem; }
+    .rider-full-rank {
+      font-size: .65rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: .5rem; font-weight: 600;
+    }
+    .rider-full-name { font-family: Georgia, serif; font-size: 1.05rem; color: var(--paper); margin-bottom: .25rem; }
+    .rider-full-country { font-size: .75rem; color: var(--muted); margin-bottom: .6rem; }
+    .rider-full-horse {
+      font-size: .75rem; color: rgba(245,242,235,.4);
+      border-top: 1px solid rgba(245,242,235,.06); padding-top: .6rem; margin-top: .6rem;
+    }
+    .rider-full-horse span { color: rgba(245,242,235,.7); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .hero { grid-template-columns: 1fr; padding-top: 7rem; }
@@ -334,6 +384,8 @@
       .about-image { display: none; }
       .events-grid { grid-template-columns: 1fr; }
       .events-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .riders-full-grid { grid-template-columns: 1fr 1fr; }
+      .meet-riders-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
       footer { grid-template-columns: 1fr 1fr; }
       .gallery-grid {
         grid-template-columns: 1fr 1fr;
@@ -350,7 +402,8 @@
     <a href="#" class="logo">Crest <span>&</span> Course</a>
     <ul>
       <li><a href="#events">Events</a></li>
-      <li><a href="#riders">Riders</a></li>
+      <li><a href="#riders">Top Riders</a></li>
+      <li><a href="#meet-riders">Meet the Riders</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -364,12 +417,13 @@
       <h1>Where <em>Precision</em> Meets Flight</h1>
       <p class="hero-sub">The home of world-class show jumping. Follow the world's finest horse and rider combinations as they compete across the international circuit.</p>
       <div class="hero-actions">
-        <button class="btn-primary">View Events</button>
-        <button class="btn-ghost">Meet the Riders</button>
+        <a href="#events" class="btn-primary">View Events</a>
+        <a href="#riders" class="btn-ghost">Top Riders</a>
+        <a href="#meet-riders" class="btn-ghost">Meet the Riders</a>
       </div>
     </div>
     <div class="hero-image">
-      <img src="https://placehold.co/700x900/1e3a2f/f5f2eb?text=." alt="Show jumping hero" />
+      <img src="Hero1.jpg" alt="Horse and rider at the jump" />
       <div class="hero-badge">
         <div class="hero-badge-num">38</div>
         <div class="hero-badge-label">Nations competing</div>
@@ -490,7 +544,7 @@
         <div class="section-eyebrow">Athletes</div>
         <h2 class="riders-title">Top Riders</h2>
       </div>
-      <a href="#" class="events-link" style="padding-right:6vw">All riders →</a>
+      <a href="#meet-riders" class="events-link" style="padding-right:6vw">All riders →</a>
     </div>
     <div class="riders-scroll">
       <div class="rider-card">
@@ -550,6 +604,141 @@
       <div class="gal-item gal-3"><img src="https://placehold.co/600x535/0e1e18/b8923a?text=." alt="Gallery" /></div>
       <div class="gal-item gal-4"><img src="https://placehold.co/500x260/3a2d1e/f5f2eb?text=." alt="Gallery" /></div>
       <div class="gal-item gal-5"><img src="https://placehold.co/900x260/1e2d3a/b8923a?text=." alt="Gallery" /></div>
+    </div>
+  </section>
+
+  <!-- MEET THE RIDERS -->
+  <section class="meet-riders" id="meet-riders">
+    <div class="meet-riders-header">
+      <div>
+        <div class="section-eyebrow" style="color:rgba(184,146,58,.8)">Full Roster</div>
+        <h2 class="meet-riders-title">Meet the Riders</h2>
+        <p class="meet-riders-sub">Every athlete competing on the 2026 international circuit — from rising talent to multiple Grand Prix champions.</p>
+      </div>
+      <a href="#riders" class="events-link">Top ranked →</a>
+    </div>
+    <div class="riders-full-grid">
+
+      <div class="rider-full-card">
+        <div class="rider-full-photo"><img src="https://placehold.co/220x293/1e3a2f/f5f2eb?text=." alt="Isabell Hartmann" /></div>
+        <div class="rider-full-info">
+          <div class="rider-full-rank">FEI World #1</div>
+          <div class="rider-full-name">Isabell Hartmann</div>
+          <div class="rider-full-country">Germany</div>
+          <div class="rider-full-horse">Horse: <span>Donauwind Z</span></div>
+        </div>
+      </div>
+
+      <div class="rider-full-card">
+        <div class="rider-full-photo"><img src="https://placehold.co/220x293/1e2d3a/f5f2eb?text=." alt="Elara van den Berg" /></div>
+        <div class="rider-full-info">
+          <div class="rider-full-rank">FEI World #2</div>
+          <div class="rider-full-name">Elara van den Berg</div>
+          <div class="rider-full-country">Netherlands</div>
+          <div class="rider-full-horse">Horse: <span>Calisto Blue</span></div>
+        </div>
+      </div>
+
+      <div class="rider-full-card">
+        <div class="rider-full-photo"><img src="https://placehold.co/220x293/2a1e3a/f5f2eb?text=." alt="Lucas Devin" /></div>
+        <div class="rider-full-info">
+          <div class="rider-full-rank">FEI World #3</div>
+          <div class="rider-full-name">Lucas Devin</div>
+          <div class="rider-full-country">France</div>
+          <div class="rider-full-horse">Horse: <span>Quorida de Treho</span></div>
+        </div>
+      </div>
+
+      <div class="rider-full-card">
+        <div class="rider-full-photo"><img src="https://placehold.co/220x293/2d3a1e/f5f2eb?text=." alt="Carlos Méndez" /></div>
+        <div class="rider-full-info">
+          <div class="rider-full-rank">FEI World #4</div>
+          <div class="rider-full-name">Carlos Méndez</div>
+          <div class="rider-full-country">Spain</div>
+          <div class="rider-full-horse">Horse: <span>Fantastico XII</span></div>
+        </div>
+      </div>
+
+      <div class="rider-full-card">
+        <div class="rider-full-photo"><img src="https://placehold.co/220x293/1e3a3a/f5f2eb?text=." alt="Sofia Andrade" /></div>
+        <div class="rider-full-info">
+          <div class="rider-full-rank">FEI World #5</div>
+          <div class="rider-full-name">Sofia Andrade</div>
+          <div class="rider-full-country">Brazil</div>
+          <div class="rider-full-horse">Horse: <span>Athletico Ymas</span></div>
+        </div>
+      </div>
+
+      <div class="rider-full-card">
+        <div class="rider-full-photo"><img src="https://placehold.co/220x293/3a2d1e/f5f2eb?text=." alt="Megan O'Brien" /></div>
+        <div class="rider-full-info">
+          <div class="rider-full-rank">FEI World #6</div>
+          <div class="rider-full-name">Megan O'Brien</div>
+          <div class="rider-full-country">Ireland</div>
+          <div class="rider-full-horse">Horse: <span>Kilnamona Cruise</span></div>
+        </div>
+      </div>
+
+      <div class="rider-full-card">
+        <div class="rider-full-photo"><img src="https://placehold.co/220x293/3a1e2d/f5f2eb?text=." alt="James Whitfield" /></div>
+        <div class="rider-full-info">
+          <div class="rider-full-rank">FEI World #7</div>
+          <div class="rider-full-name">James Whitfield</div>
+          <div class="rider-full-country">Great Britain</div>
+          <div class="rider-full-horse">Horse: <span>Equine America Aretino</span></div>
+        </div>
+      </div>
+
+      <div class="rider-full-card">
+        <div class="rider-full-photo"><img src="https://placehold.co/220x293/1a3a2a/f5f2eb?text=." alt="Nadia Müller" /></div>
+        <div class="rider-full-info">
+          <div class="rider-full-rank">FEI World #8</div>
+          <div class="rider-full-name">Nadia Müller</div>
+          <div class="rider-full-country">Switzerland</div>
+          <div class="rider-full-horse">Horse: <span>Clintord</span></div>
+        </div>
+      </div>
+
+      <div class="rider-full-card">
+        <div class="rider-full-photo"><img src="https://placehold.co/220x293/2a3a1a/f5f2eb?text=." alt="Henrik Svensson" /></div>
+        <div class="rider-full-info">
+          <div class="rider-full-rank">FEI World #9</div>
+          <div class="rider-full-name">Henrik Svensson</div>
+          <div class="rider-full-country">Sweden</div>
+          <div class="rider-full-horse">Horse: <span>Puccini van Orshof</span></div>
+        </div>
+      </div>
+
+      <div class="rider-full-card">
+        <div class="rider-full-photo"><img src="https://placehold.co/220x293/1a2a3a/f5f2eb?text=." alt="Laura Kraut" /></div>
+        <div class="rider-full-info">
+          <div class="rider-full-rank">FEI World #10</div>
+          <div class="rider-full-name">Laura Kraut</div>
+          <div class="rider-full-country">USA</div>
+          <div class="rider-full-horse">Horse: <span>Baloutinue</span></div>
+        </div>
+      </div>
+
+      <div class="rider-full-card">
+        <div class="rider-full-photo"><img src="https://placehold.co/220x293/2d1e3a/f5f2eb?text=." alt="Aiko Tanaka" /></div>
+        <div class="rider-full-info">
+          <div class="rider-full-rank">FEI World #11</div>
+          <div class="rider-full-name">Aiko Tanaka</div>
+          <div class="rider-full-country">Japan</div>
+          <div class="rider-full-horse">Horse: <span>Breitling LS</span></div>
+        </div>
+      </div>
+
+      <div class="rider-full-card">
+        <div class="rider-full-photo"><img src="https://placehold.co/220x293/3a1a2a/f5f2eb?text=." alt="Antoine Bourgeois" /></div>
+        <div class="rider-full-info">
+          <div class="rider-full-rank">FEI World #12</div>
+          <div class="rider-full-name">Antoine Bourgeois</div>
+          <div class="rider-full-country">Belgium</div>
+          <div class="rider-full-horse">Horse: <span>Niels van 't Eigenlo</span></div>
+        </div>
+      </div>
+
     </div>
   </section>
 
