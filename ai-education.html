@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; script-src 'none'; object-src 'none'; frame-ancestors 'none';" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; script-src 'unsafe-inline'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https://formsubmit.co;" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>Kenny Marcelus — Developer, Author & Creator</title>
   <style>
@@ -332,9 +332,9 @@
     <li><a href="#courses">Projects</a></li>
     <li><a href="#features">Skills</a></li>
     <li><a href="#testimonials">About</a></li>
-    <li><a href="#cta">Contact</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="nav-cta">Let's Connect</button>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Let's Connect</button>
 </nav>
 
 <!-- HERO -->
@@ -560,10 +560,17 @@
 </section>
 
 <!-- CTA -->
-<div class="cta-section" id="cta">
+<div class="cta-section" id="contact">
   <h2>Open to <em>collaboration</em></h2>
   <p>Got an interesting project or idea? I'm always open to a good conversation.</p>
-  <a class="btn-primary" href="mailto:kennymarcelus@gmail.com">Get In Touch</a>
+  <form action="https://formsubmit.co/kennymarcelus@gmail.com" method="POST" style="max-width:480px;margin:0 auto;display:flex;flex-direction:column;gap:1rem;">
+    <input type="hidden" name="_subject" value="New message from kennymarcelus.netlify.app">
+    <input type="hidden" name="_next" value="https://kennymarcelus.netlify.app">
+    <input type="text" name="name" placeholder="Your name" required style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:var(--paper);border-radius:12px;padding:.85rem 1.2rem;font-size:.9rem;width:100%;outline:none;">
+    <input type="email" name="email" placeholder="Your email" required style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:var(--paper);border-radius:12px;padding:.85rem 1.2rem;font-size:.9rem;width:100%;outline:none;">
+    <textarea name="message" placeholder="Your message" rows="4" required style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:var(--paper);border-radius:12px;padding:.85rem 1.2rem;font-size:.9rem;width:100%;outline:none;resize:vertical;font-family:inherit;"></textarea>
+    <button type="submit" class="btn-primary">Send Message</button>
+  </form>
 </div>
 
 <!-- FOOTER -->
@@ -592,7 +599,7 @@
     <h4>Site</h4>
     <ul>
       <li><a href="#testimonials">About</a></li>
-      <li><a href="#cta">Contact</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
 </footer>
