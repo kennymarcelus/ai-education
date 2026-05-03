@@ -1,1 +1,12 @@
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Netlify local state
 .netlify/
+
+# Node (if ever needed)
+node_modules/
