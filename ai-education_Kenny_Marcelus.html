@@ -381,7 +381,7 @@
 <section class="hero" aria-label="Introduction">
   <div class="hero-glow" aria-hidden="true"></div>
   <h1>I build things. Then I write about <em>building them.</em></h1>
-  <p class="hero-sub">AI-Powered Developer · Vibe Coder · Author. I ship iOS apps, write technical eBooks, and build everything with Claude Code — from Berlin.</p>
+  <p class="hero-sub">AI-Powered Developer · Vibe Coder · Author. I ship iOS apps and SaaS tools, write technical eBooks, and build everything with Claude Code — from Berlin.</p>
   <div class="hero-actions">
     <a class="btn-primary" href="#courses">See My Work</a>
     <a class="btn-ghost" href="https://github.com/kennymarcelus">GitHub →</a>
@@ -438,10 +438,10 @@
       <!-- Dashboard panel -->
       <div class="dashboard-panel">
         <div class="dp-label">eBooks Published</div>
-        <div class="dp-stat">2</div>
+        <div class="dp-stat">1</div>
         <div class="dp-divider"></div>
         <div class="dp-label">iOS App</div>
-        <div class="dp-stat" style="font-size:1.1rem">In Review</div>
+        <div class="dp-stat" style="font-size:1.1rem">Live on App Store</div>
         <div class="dp-divider"></div>
         <div class="dp-label">Stack</div>
         <div class="dp-stat" style="font-size:.8rem;font-weight:600;letter-spacing:-.01em;line-height:1.4">Next.js · Supabase · Expo</div>
@@ -469,28 +469,58 @@
   <p class="section-sub">A mix of published writing and apps — with more on the way.</p>
 
   <div class="courses-grid">
-    <!-- Card 1 -->
+    <!-- Card 1 — EqueCare -->
+    <div class="course-card">
+      <div class="course-thumb ct-3">
+        <div class="course-thumb-icon">🐎</div>
+      </div>
+      <div class="course-body">
+        <span class="course-level level-beginner">Published · iOS App</span>
+        <div class="course-name">EqueCare</div>
+        <div class="course-desc">A booking marketplace for equine services — connecting horse owners with farriers, vets, physiotherapists and more. Built with Expo, Supabase, and Stripe.</div>
+        <div class="course-meta">
+          <span class="course-lessons">iOS · App Store</span>
+          <a class="course-arrow" href="https://apps.apple.com/app/equecare/id6770705995" target="_blank" rel="noopener noreferrer" aria-label="View EqueCare on the App Store">→</a>
+        </div>
+      </div>
+    </div>
+    <!-- Card 2 — Vibe Coding with Claude Code -->
     <div class="course-card">
       <div class="course-thumb ct-1">
         <div class="course-thumb-icon">📖</div>
       </div>
       <div class="course-body">
-        <span class="course-level level-beginner">Published</span>
-        <div class="course-name">Vibe Coding with Claude</div>
-        <div class="course-desc">A practical guide to building real projects using AI-assisted development. Written for developers who want to move fast without breaking things.</div>
+        <span class="course-level level-beginner">Published · eBook</span>
+        <div class="course-name">Vibe Coding with Claude Code</div>
+        <div class="course-desc">A practical pocket guide to building real projects using AI-assisted development. Written for developers who want to move fast without breaking things.</div>
         <div class="course-meta">
           <span class="course-lessons">eBook · Available now</span>
-          <a class="course-arrow" href="https://www.amazon.de/-/en/Kenny-Marcelus-ebook/dp/B0GYKNLRB6/" target="_blank" rel="noopener noreferrer" aria-label="View Vibe Coding with Claude on Amazon">→</a>
+          <a class="course-arrow" href="https://www.amazon.de/-/en/Kenny-Marcelus-ebook/dp/B0GYKNLRB6/" target="_blank" rel="noopener noreferrer" aria-label="View Vibe Coding with Claude Code on Amazon">→</a>
         </div>
       </div>
     </div>
-    <!-- Card 2 -->
+    <!-- Card 3 — InfraBase -->
     <div class="course-card">
       <div class="course-thumb ct-2">
+        <div class="course-thumb-icon">🖥️</div>
+      </div>
+      <div class="course-body">
+        <span class="course-level level-beginner">Live · SaaS Tool</span>
+        <div class="course-name">InfraBase</div>
+        <div class="course-desc">A modern infrastructure management platform for IT teams. Track devices, rooms, access points and cables across multiple offices with full audit trail.</div>
+        <div class="course-meta">
+          <span class="course-lessons">SaaS · Web App</span>
+          <button class="course-arrow" aria-label="InfraBase — live SaaS tool" disabled>→</button>
+        </div>
+      </div>
+    </div>
+    <!-- Card 4 — The MCP Handbook -->
+    <div class="course-card">
+      <div class="course-thumb ct-6">
         <div class="course-thumb-icon">🔗</div>
       </div>
       <div class="course-body">
-        <span class="course-level level-intermediate">Coming Soon</span>
+        <span class="course-level level-intermediate">Coming Soon · eBook</span>
         <div class="course-name">The MCP Handbook</div>
         <div class="course-desc">A deep-dive into Model Context Protocol — how to build, connect, and deploy MCP servers with Claude.</div>
         <div class="course-meta">
@@ -499,18 +529,33 @@
         </div>
       </div>
     </div>
-    <!-- Card 3 -->
+    <!-- Card 5 — MeetingLens -->
     <div class="course-card">
       <div class="course-thumb ct-5">
-        <div class="course-thumb-icon">📱</div>
+        <div class="course-thumb-icon">🎙️</div>
       </div>
       <div class="course-body">
-        <span class="course-level level-advanced">In Review</span>
-        <div class="course-name">iOS App</div>
-        <div class="course-desc">Currently in Apple review. Details coming once it's live on the App Store.</div>
+        <span class="course-level level-advanced">In Development · iOS App</span>
+        <div class="course-name">MeetingLens</div>
+        <div class="course-desc">A cross-platform meeting transcription and translation app. Record, transcribe, and translate meetings in real time using Groq Whisper and Claude API.</div>
         <div class="course-meta">
-          <span class="course-lessons">iOS · App Store</span>
-          <button class="course-arrow" aria-label="iOS App — currently in review" disabled>→</button>
+          <span class="course-lessons">iOS · In Development</span>
+          <button class="course-arrow" aria-label="MeetingLens — in development" disabled>→</button>
+        </div>
+      </div>
+    </div>
+    <!-- Card 6 — Paychop -->
+    <div class="course-card">
+      <div class="course-thumb ct-4">
+        <div class="course-thumb-icon">💰</div>
+      </div>
+      <div class="course-body">
+        <span class="course-level level-advanced">In Development · iOS App</span>
+        <div class="course-name">Paychop</div>
+        <div class="course-desc">An income distribution calculator app. Define buckets, set percentages, and instantly see how your income is allocated.</div>
+        <div class="course-meta">
+          <span class="course-lessons">iOS · In Development</span>
+          <button class="course-arrow" aria-label="Paychop — in development" disabled>→</button>
         </div>
       </div>
     </div>
@@ -588,7 +633,7 @@
   <h2 id="about-heading" class="section-title">A bit about <em>me</em></h2>
   <div class="testimonials-grid">
     <div class="testi-card" style="grid-column: 1 / -1">
-      <div class="testi-quote">I'm Kenny — a Berlin-based developer and IT professional transitioning into full-stack and DevOps engineering. I've spent years managing enterprise infrastructure, and now I build and ship my own projects on the side: iOS apps, web tools, and technical books. I like understanding how things work at every layer of the stack — from the server to the UI — and I'm always building something new.</div>
+      <div class="testi-quote">I'm Kenny — a Berlin-based developer, IT professional, and AI Coder author. I build iOS apps and SaaS tools using Claude Code and ship them under the Brightline Apps brand. I've published 1 technical eBook on AI-assisted development, and I'm always working on something new.</div>
       <div class="testi-author">
         <div class="testi-avatar av-1">K</div>
         <div>
@@ -632,9 +677,12 @@
   <div class="footer-col">
     <h4>Projects</h4>
     <ul>
-      <li><a href="https://www.amazon.de/-/en/Kenny-Marcelus-ebook/dp/B0GYKNLRB6/" target="_blank" rel="noopener noreferrer">Vibe Coding with Claude</a></li>
+      <li><a href="https://apps.apple.com/app/equecare/id6770705995" target="_blank" rel="noopener noreferrer">EqueCare</a></li>
+      <li><a href="https://www.amazon.de/-/en/Kenny-Marcelus-ebook/dp/B0GYKNLRB6/" target="_blank" rel="noopener noreferrer">Vibe Coding with Claude Code</a></li>
+      <li><a href="#">InfraBase</a></li>
       <li><a href="#">The MCP Handbook</a></li>
-      <li><a href="#">iOS App</a></li>
+      <li><a href="#">MeetingLens</a></li>
+      <li><a href="#">Paychop</a></li>
     </ul>
   </div>
   <div class="footer-col">
