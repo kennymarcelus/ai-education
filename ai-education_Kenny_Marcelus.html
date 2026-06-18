@@ -178,6 +178,8 @@
       background: inherit; opacity: .6;
     }
     .course-thumb-icon { position: relative; z-index: 1; }
+    .course-thumb-logo::before { display: none; }
+    .course-thumb-logo img { width: 75%; height: auto; object-fit: contain; }
     .ct-1 { background: linear-gradient(135deg, #1a0533, #3d1273); }
     .ct-2 { background: linear-gradient(135deg, #03182c, #0a3d62); }
     .ct-3 { background: linear-gradient(135deg, #1a2200, #3d5200); }
@@ -471,8 +473,8 @@
   <div class="courses-grid">
     <!-- Card 1 — EqueCare -->
     <div class="course-card">
-      <div class="course-thumb" style="background:#2E7D32; padding: 1.5rem;">
-        <img src="assets/equecare-logo.png" alt="EqueCare" style="max-height:120px; width:auto; object-fit:contain;">
+      <div class="course-thumb course-thumb-logo" style="background:#2E7D32;">
+        <img src="assets/equecare-logo.png" alt="EqueCare">
       </div>
       <div class="course-body">
         <span class="course-level level-beginner">Published · iOS App</span>
