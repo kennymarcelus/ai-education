@@ -180,6 +180,8 @@
     .course-thumb-icon { position: relative; z-index: 1; }
     .course-thumb-logo::before { display: none; }
     .course-thumb-logo img { width: 75%; height: auto; object-fit: contain; }
+    .course-thumb-cover::before { display: none; }
+    .course-thumb-cover img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
     .ct-1 { background: linear-gradient(135deg, #1a0533, #3d1273); }
     .ct-2 { background: linear-gradient(135deg, #03182c, #0a3d62); }
     .ct-3 { background: linear-gradient(135deg, #1a2200, #3d5200); }
@@ -488,8 +490,8 @@
     </div>
     <!-- Card 2 — Vibe Coding with Claude Code -->
     <div class="course-card">
-      <div class="course-thumb ct-1">
-        <div class="course-thumb-icon">📖</div>
+      <div class="course-thumb course-thumb-cover">
+        <img src="assets/vibe-coding-cover.png" alt="Vibe Coding with Claude Code book cover">
       </div>
       <div class="course-body">
         <span class="course-level level-beginner">Published · eBook</span>
